@@ -1,6 +1,6 @@
 # Pontislabs - AI 전문 개발 스튜디오 랜딩 페이지
 
-토스, 네이버, 에이블리, 레브잇 출신 프로덕트 중심 AI 전문가들의 외주 에이전시 소개 랜딩 페이지입니다.
+토스, 네이버, 에이블리 출신 프로덕트 중심 AI 전문가들의 외주 에이전시 소개 랜딩 페이지입니다.
 
 ## 기술 스택
 
@@ -62,7 +62,7 @@ npm start
 ### 섹션 구성
 
 1. **Hero Section**: 메인 메시지와 CTA 버튼
-2. **Background Section**: 팀 출신 회사 강조 (토스, 네이버, 에이블리, 레브잇)
+2. **Background Section**: 팀 출신 회사 강조 (토스, 네이버, 에이블리)
 3. **Services Section**: 4가지 주요 서비스 소개
 4. **Process Section**: 4단계 진행 방식 (Discovery → Design → Build → Launch)
 5. **Case Studies Section**: 3가지 프로젝트 사례
@@ -102,8 +102,8 @@ colors: {
 const handleSubmit = async (e: FormEvent) => {
   e.preventDefault();
   // TODO: API 연결
-  const response = await fetch('/api/contact', {
-    method: 'POST',
+  const response = await fetch("/api/contact", {
+    method: "POST",
     body: JSON.stringify(formData),
   });
 };
@@ -130,4 +130,5 @@ vercel
 ## 라이선스
 
 © 2025 PONTISLABS. All rights reserved.
+
 # pontislabs-website

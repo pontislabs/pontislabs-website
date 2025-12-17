@@ -16,11 +16,6 @@ export default function AboutSection() {
       description: "에이블리 MAU 1,000만 앱 개발 · 8년 경력",
       impact: "모바일 성능 최적화 & A/B 테스트 시스템",
     },
-    {
-      role: "DevOps Engineer",
-      description: "레브잇 DAU 150만 인프라 설계 · 8년 경력",
-      impact: "99.9% 가용성, 비용 최적화 50% 달성",
-    },
   ];
 
   const values = [

@@ -36,7 +36,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-xl text-gray-400 leading-relaxed max-w-xl">
-              토스, 네이버, 에이블리, 레브잇에서{" "}
+              토스, 네이버, 에이블리에서{" "}
               <span className="text-gray-300 font-medium">
                 실제 대규모 서비스
               </span>
