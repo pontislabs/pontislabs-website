@@ -27,12 +27,12 @@ export default function HeroSection() {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                 대규모 프로덕션을 실제로 운영한 팀
               </span>
               <br />
-              <span className="whitespace-nowrap">당신의 AI를 만듭니다.</span>
+              <span>당신의 AI를 만듭니다.</span>
             </h1>
 
             <p className="text-xl text-gray-400 leading-relaxed max-w-xl">

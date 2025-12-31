@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import Header from '@/components/Header';
 import { categoryLabels } from '@/lib/constants';
 
 // Blog post data
@@ -215,6 +216,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       {/* Header Spacer */}
       <div className="h-20" />
 
