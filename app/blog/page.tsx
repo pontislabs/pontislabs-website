@@ -55,7 +55,7 @@ export default function BlogPage() {
       {/* Header Spacer */}
       <div className="h-20" />
 
-      <main className="section-container section-padding">
+      <main className="section-container pt-8 pb-16 md:pt-12 md:pb-24">
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-block px-4 py-2 bg-white/5 border border-gray-800 rounded-full mb-6">
