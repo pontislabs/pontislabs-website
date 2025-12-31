@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 // Header Component
 export default function Header() {
@@ -70,6 +71,14 @@ export default function Header() {
               >
                 About
               </button>
+            </li>
+            <li>
+              <Link
+                href="/blog"
+                className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
+              >
+                Blog
+              </Link>
             </li>
             <li>
               <button
