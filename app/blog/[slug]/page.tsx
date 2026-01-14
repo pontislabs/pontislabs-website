@@ -160,16 +160,6 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
             )}
 
-            {/* Main Screenshot */}
-            <div className="relative rounded-2xl overflow-hidden mb-16 border border-gray-800 shadow-2xl">
-              <img
-                src={post.thumbnail}
-                alt={post.title}
-                className="w-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-            </div>
-
             {/* Content */}
             <div className="max-w-3xl mx-auto mb-16">
               <div
