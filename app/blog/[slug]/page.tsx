@@ -1,55 +1,74 @@
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
-import { categoryLabels } from '@/lib/constants';
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import Header from "@/components/Header";
+import { categoryLabels } from "@/lib/constants";
 
 // Blog post data
-const blogPostsData: Record<string, {
-  title: string;
-  description: string;
-  category: 'tech' | 'news' | 'portfolio';
-  thumbnail: string;
-  date: string;
-  content: string;
-  // Portfolio specific fields
-  metrics?: { label: string; value: string; subtext?: string }[];
-  techStack?: string[];
-  images?: { src: string; caption: string }[];
-  comparison?: { feature: string; before: string; after: string }[];
-  domains?: { name: string; items: string[] }[];
-}> = {
-  'ddangit-hr-chatbot': {
-    title: 'ddangit',
-    description: 'RAG 기반 Enterprise HR 챗봇 시스템',
-    category: 'portfolio',
-    thumbnail: '/images/blog/ddangit/chatbot-interface.png',
-    date: '2025-01-14',
+const blogPostsData: Record<
+  string,
+  {
+    title: string;
+    description: string;
+    category: "tech" | "news" | "portfolio";
+    thumbnail: string;
+    date: string;
+    content: string;
+    // Portfolio specific fields
+    metrics?: { label: string; value: string; subtext?: string }[];
+    techStack?: string[];
+    images?: { src: string; caption: string }[];
+    comparison?: { feature: string; before: string; after: string }[];
+    domains?: { name: string; items: string[] }[];
+  }
+> = {
+  "ddangit-hr-chatbot": {
+    title: "ddangit",
+    description: "RAG 기반 Enterprise HR 챗봇 시스템",
+    category: "portfolio",
+    thumbnail: "/images/blog/ddangit/chatbot-interface.png",
+    date: "2025-01-14",
     metrics: [
-      { label: '응답 정확도', value: '95%+', subtext: 'Human Evaluation 기준' },
-      { label: '응답 시간', value: '2.3초', subtext: '평균 응답 속도' },
-      { label: 'HR 업무 감소', value: '80%', subtext: '반복 문의 자동화' },
-      { label: '서비스 가용성', value: '24/7', subtext: '무중단 운영' },
+      { label: "응답 정확도", value: "95%+", subtext: "Human Evaluation 기준" },
+      { label: "응답 시간", value: "2.3초", subtext: "평균 응답 속도" },
+      { label: "HR 업무 감소", value: "80%", subtext: "반복 문의 자동화" },
+      { label: "서비스 가용성", value: "24/7", subtext: "무중단 운영" },
     ],
-    techStack: ['React', 'TypeScript', 'Python', 'FastAPI', 'GPT-4', 'LangChain', 'Pinecone', 'PostgreSQL', 'AWS'],
+    techStack: [
+      "React",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "GPT-4",
+      "LangChain",
+      "PostgreSQL",
+      "AWS",
+    ],
     images: [
-      { src: '/images/blog/ddangit/chatbot-response.png', caption: 'AI 챗봇 인터페이스' },
-      { src: '/images/blog/ddangit/admin-documents.png', caption: '문서 관리' },
-      { src: '/images/blog/ddangit/admin-qna.png', caption: 'Q&A 관리' },
-      { src: '/images/blog/ddangit/admin-users.png', caption: '사용자 관리' },
-      { src: '/images/blog/ddangit/admin-logs.png', caption: '대화 로그 분석' },
+      {
+        src: "/images/blog/ddangit/chatbot-response.png",
+        caption: "AI 챗봇 인터페이스",
+      },
+      { src: "/images/blog/ddangit/admin-documents.png", caption: "문서 관리" },
+      { src: "/images/blog/ddangit/admin-qna.png", caption: "Q&A 관리" },
+      { src: "/images/blog/ddangit/admin-users.png", caption: "사용자 관리" },
+      { src: "/images/blog/ddangit/admin-logs.png", caption: "대화 로그 분석" },
     ],
     comparison: [
-      { feature: '검색 방식', before: '키워드 매칭', after: 'Semantic Vector Search' },
-      { feature: '응답 시간', before: '5-10초+', after: '2.3초' },
-      { feature: '정확도', before: '60-70%', after: '95%+' },
-      { feature: '출처 표시', before: '불가능', after: '문서명 + 페이지' },
-      { feature: '관리 도구', before: '없음', after: '전용 Dashboard' },
+      {
+        feature: "검색 방식",
+        before: "키워드 매칭",
+        after: "Semantic Vector Search",
+      },
+      { feature: "응답 시간", before: "5-10초+", after: "2.3초" },
+      { feature: "정확도", before: "60-70%", after: "95%+" },
+      { feature: "출처 표시", before: "불가능", after: "문서명 + 페이지" },
+      { feature: "관리 도구", before: "없음", after: "전용 Dashboard" },
     ],
     domains: [
-      { name: 'Legal', items: ['계약서 검토', '컴플라이언스'] },
-      { name: 'Support', items: ['고객 응대', '기술 지원'] },
-      { name: 'Finance', items: ['회계 기준', '정산 규정'] },
-      { name: 'Healthcare', items: ['의료 가이드', '약품 정보'] },
+      { name: "Legal", items: ["계약서 검토", "컴플라이언스"] },
+      { name: "Support", items: ["고객 응대", "기술 지원"] },
+      { name: "Finance", items: ["회계 기준", "정산 규정"] },
+      { name: "Healthcare", items: ["의료 가이드", "약품 정보"] },
     ],
     content: `
 ## 프로젝트 소개
@@ -75,24 +94,31 @@ export function generateStaticParams() {
 // Parse markdown-like content to HTML
 function parseContent(content: string): string {
   return content
-    .split('\n')
+    .split("\n")
     .map((line) => {
-      if (line.startsWith('### ')) {
-        return `<h3 class="text-xl font-bold mt-8 mb-4 text-white">${line.slice(4)}</h3>`;
+      if (line.startsWith("### ")) {
+        return `<h3 class="text-xl font-bold mt-8 mb-4 text-white">${line.slice(
+          4
+        )}</h3>`;
       }
-      if (line.startsWith('## ')) {
-        return `<h2 class="text-2xl font-bold mt-10 mb-4 text-white">${line.slice(3)}</h2>`;
+      if (line.startsWith("## ")) {
+        return `<h2 class="text-2xl font-bold mt-10 mb-4 text-white">${line.slice(
+          3
+        )}</h2>`;
       }
-      let processedLine = line.replace(/\*\*([^*]+)\*\*/g, '<strong class="text-white">$1</strong>');
-      if (processedLine.startsWith('- ')) {
+      let processedLine = line.replace(
+        /\*\*([^*]+)\*\*/g,
+        '<strong class="text-white">$1</strong>'
+      );
+      if (processedLine.startsWith("- ")) {
         return `<li class="ml-4 text-gray-300">${processedLine.slice(2)}</li>`;
       }
-      if (processedLine.trim() === '') {
-        return '<br />';
+      if (processedLine.trim() === "") {
+        return "<br />";
       }
       return `<p class="text-gray-300 mb-4 leading-relaxed">${processedLine}</p>`;
     })
-    .join('\n');
+    .join("\n");
 }
 
 interface PageProps {
@@ -108,7 +134,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   // Portfolio layout
-  if (post.category === 'portfolio') {
+  if (post.category === "portfolio") {
     return (
       <div className="min-h-screen bg-background">
         <Header />
@@ -120,8 +146,18 @@ export default async function BlogPostPage({ params }: PageProps) {
             href="/blog"
             className="inline-flex items-center text-gray-400 hover:text-white transition-colors mb-8"
           >
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <svg
+              className="w-4 h-4 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
             블로그로 돌아가기
           </Link>
@@ -151,9 +187,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
                       {metric.value}
                     </div>
-                    <div className="text-white font-medium mb-1">{metric.label}</div>
+                    <div className="text-white font-medium mb-1">
+                      {metric.label}
+                    </div>
                     {metric.subtext && (
-                      <div className="text-sm text-gray-500">{metric.subtext}</div>
+                      <div className="text-sm text-gray-500">
+                        {metric.subtext}
+                      </div>
                     )}
                   </div>
                 ))}
@@ -177,7 +217,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <div className="bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden">
                   <div className="grid grid-cols-3 bg-gray-800/50 p-4 font-medium">
                     <div className="text-gray-400">비교 항목</div>
-                    <div className="text-center text-gray-400">GPT + Notion</div>
+                    <div className="text-center text-gray-400">
+                      GPT + Notion
+                    </div>
                     <div className="text-center text-primary">ddangit</div>
                   </div>
                   {post.comparison.map((row, index) => (
@@ -185,9 +227,15 @@ export default async function BlogPostPage({ params }: PageProps) {
                       key={index}
                       className="grid grid-cols-3 p-4 border-t border-gray-800 hover:bg-gray-800/30 transition-colors"
                     >
-                      <div className="text-white font-medium">{row.feature}</div>
-                      <div className="text-center text-gray-500">{row.before}</div>
-                      <div className="text-center text-primary font-medium">{row.after}</div>
+                      <div className="text-white font-medium">
+                        {row.feature}
+                      </div>
+                      <div className="text-center text-gray-500">
+                        {row.before}
+                      </div>
+                      <div className="text-center text-primary font-medium">
+                        {row.after}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -212,7 +260,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                         className="w-full"
                       />
                       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                        <p className="text-white font-medium">{image.caption}</p>
+                        <p className="text-white font-medium">
+                          {image.caption}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -254,7 +304,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                       key={index}
                       className="bg-gray-900/50 border border-gray-800 rounded-xl p-5 hover:border-primary/50 transition-colors"
                     >
-                      <h3 className="text-white font-bold mb-3">{domain.name}</h3>
+                      <h3 className="text-white font-bold mb-3">
+                        {domain.name}
+                      </h3>
                       <ul className="space-y-1">
                         {domain.items.map((item, i) => (
                           <li key={i} className="text-gray-400 text-sm">
@@ -302,8 +354,18 @@ export default async function BlogPostPage({ params }: PageProps) {
           href="/blog"
           className="inline-flex items-center text-gray-400 hover:text-white transition-colors mb-8"
         >
-          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-4 h-4 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
           블로그로 돌아가기
         </Link>
@@ -318,10 +380,10 @@ export default async function BlogPostPage({ params }: PageProps) {
             </h1>
             <div className="text-gray-400">
               <time>
-                {new Date(post.date).toLocaleDateString('ko-KR', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
+                {new Date(post.date).toLocaleDateString("ko-KR", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 })}
               </time>
             </div>
@@ -329,7 +391,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {post.thumbnail && (
             <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl mb-12 overflow-hidden">
-              <img src={post.thumbnail} alt={post.title} className="w-full h-full object-cover" />
+              <img
+                src={post.thumbnail}
+                alt={post.title}
+                className="w-full h-full object-cover"
+              />
             </div>
           )}
 

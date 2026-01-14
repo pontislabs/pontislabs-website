@@ -12,12 +12,12 @@ RAG 기반 Enterprise HR 챗봇 시스템
 
 ## 핵심 성과
 
-| 지표 | 수치 |
-|------|------|
-| 응답 정확도 | 95%+ |
-| 응답 시간 | 2.3초 |
-| HR 업무 감소 | 80% |
-| 서비스 가용성 | 24/7 |
+| 지표          | 수치  |
+| ------------- | ----- |
+| 응답 정확도   | 95%+  |
+| 응답 시간     | 2.3초 |
+| HR 업무 감소  | 80%   |
+| 서비스 가용성 | 24/7  |
 
 ## 프로젝트 소개
 
@@ -31,17 +31,17 @@ RAG 기반 Enterprise HR 챗봇 시스템
 
 ## GPT + Notion 대비 장점
 
-| 항목 | GPT + Notion | ddangit |
-|------|--------------|---------|
-| 검색 방식 | 키워드 매칭 | Semantic Vector Search |
-| 응답 시간 | 5-10초+ | 2.3초 |
-| 정확도 | 60-70% | 95%+ |
-| 출처 표시 | 불가능 | 문서명 + 페이지 |
-| 관리 도구 | 없음 | 전용 Dashboard |
+| 항목      | GPT + Notion | ddangit                |
+| --------- | ------------ | ---------------------- |
+| 검색 방식 | 키워드 매칭  | Semantic Vector Search |
+| 응답 시간 | 5-10초+      | 2.3초                  |
+| 정확도    | 60-70%       | 95%+                   |
+| 출처 표시 | 불가능       | 문서명 + 페이지        |
+| 관리 도구 | 없음         | 전용 Dashboard         |
 
 ## Tech Stack
 
-React, TypeScript, Python, FastAPI, GPT-4, LangChain, Pinecone, PostgreSQL, AWS
+React, TypeScript, Python, FastAPI, GPT-4, LangChain, PostgreSQL, AWS
 
 ## 확장 가능 도메인
 
